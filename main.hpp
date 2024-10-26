@@ -46,7 +46,7 @@ int readFile(string filename){
     double avg;
     string eName, dName;
 
-    ifs.open("employee.txt");
+    ifs.open(filename);
     if (!ifs)
     {
         cout << "File Open Error\n";
