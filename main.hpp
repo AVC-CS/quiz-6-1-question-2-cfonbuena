@@ -38,6 +38,7 @@ int writeFile(string filename){
         ofs << eID << "\t" << eName << "\t" << dName << "\t" << salary << "\n";
     }
     ofs.close();
+    return numEmployee;
 }
 
 int readFile(string filename){
