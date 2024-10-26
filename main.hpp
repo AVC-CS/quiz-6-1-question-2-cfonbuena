@@ -3,10 +3,10 @@
 #include <string>
 using namespace std; 
 
-void writeFile(string);
-void readFile(string);
+int writeFile(string);
+int readFile(string);
 
-void writeFile(string filename){
+int writeFile(string filename){
     ofstream ofs;
     int numEmployee, eID, salary;
     string eName, dName;
@@ -38,4 +38,30 @@ void writeFile(string filename){
         ofs << eID << "\t" << eName << "\t" << dName << "\t" << salary << "\n";
     }
     ofs.close();
+}
+
+int readFile(string filename){
+    ifstream ifs;
+    int numEmployee, eID, salary, total = 0;
+    double avg;
+    string eName, dName;
+
+    ifs.open("employee.txt");
+    if (!ifs)
+    {
+        cout << "File Open Error\n";
+        exit(0);
+    }
+
+    ifs >> numEmployee;
+
+    for (int i=0; i<numEmployee; i++){
+        ifs >> eID >> eName >> dName >> salary;
+        total = total + salary;
+        cout << eID << "\t" << eName << "\t" << dName << "\t" << salary << "\n";
+    }
+    avg = total / numEmployee;
+    cout << "Total: " << total << endl;
+    cout << "Average: " << avg;
+    return numEmployee;
 }
